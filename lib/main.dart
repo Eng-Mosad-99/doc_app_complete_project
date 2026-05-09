@@ -1,6 +1,7 @@
+import 'package:doc_app_complete_project/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'doc_app.dart';
 
 void main() {
-  runApp(const DocApp());
+  runApp(DocApp(appRouter: AppRouter()));
 }
