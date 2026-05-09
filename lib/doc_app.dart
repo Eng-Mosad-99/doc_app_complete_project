@@ -1,5 +1,6 @@
 import 'package:doc_app_complete_project/core/routing/app_router.dart';
 import 'package:doc_app_complete_project/core/routing/routes.dart';
+import 'package:doc_app_complete_project/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,6 +19,10 @@ class DocApp extends StatelessWidget {
         return  MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.onBoardingScreen,
+      theme: ThemeData(
+        primaryColor: ColorsManager.mainBlue,
+        scaffoldBackgroundColor: Colors.white,
+      ),
       onGenerateRoute: appRouter.onGenerateRoute,
     );
       },
