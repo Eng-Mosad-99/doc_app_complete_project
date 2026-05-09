@@ -1,11 +1,12 @@
 import 'package:doc_app_complete_project/core/routing/routes.dart';
+import 'package:doc_app_complete_project/feature/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onBoardingScreen:
-        return MaterialPageRoute(builder: (_) => const Placeholder());
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
