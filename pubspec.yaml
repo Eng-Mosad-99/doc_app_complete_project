@@ -54,6 +54,10 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   # For Splash Screen
   flutter_native_splash: ^2.4.7
+  # An SVG rendering and widget library for Flutter, which allows painting and displaying Scalable Vector Graphics 1.1 files.
+  flutter_svg: ^2.2.3
+  # A flutter plugin for adapting screen and font size.Let your UI display a reasonable layout on different screen sizes!
+  flutter_screenutil: ^5.9.3
  
 
 
