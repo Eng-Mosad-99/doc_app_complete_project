@@ -1,10 +1,18 @@
+import 'package:doc_app_complete_project/core/helper/spacing.dart';
 import 'package:doc_app_complete_project/core/theming/styles.dart';
+import 'package:doc_app_complete_project/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +24,21 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text('Welcome Back', style: Styles.font24BlueBold),
-                SizedBox(height: 8.h),
+                verticalSpace(8),
                 Text(
                   "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
                   style: Styles.font14GreyRegular,
+                ),
+                verticalSpace(36),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                     AppTextFormField(
+                      hintText: 'Email',
+                     ),
+                    ],
+                  ),
                 ),
               ],
             ),

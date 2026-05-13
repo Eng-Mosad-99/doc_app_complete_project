@@ -25,10 +25,20 @@ class Styles {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.grey,
   );
+  static TextStyle font14LightGreyRegular =  TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.lightGrey,
+  );
   static TextStyle font14GreyRegular =  TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.grey,
+  );
+  static TextStyle font14DarkBlueMedium =  TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.darkBlue,
   );
   static TextStyle font16WhiteSemiBold =  TextStyle(
     fontSize: 16.sp,
