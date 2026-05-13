@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Text('Welcome Back', style: Styles.font24BlackBold,),
+                Text('Welcome Back', style: Styles.font24BlueBold,),
               ],
             ),
           ),
