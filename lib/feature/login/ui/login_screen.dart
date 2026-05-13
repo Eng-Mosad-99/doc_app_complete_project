@@ -8,14 +8,19 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal:30.w , vertical: 30.h ),
+          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text('Welcome Back', style: Styles.font24BlueBold,),
+                Text('Welcome Back', style: Styles.font24BlueBold),
+                SizedBox(height: 8.h),
+                Text(
+                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
+                  style: Styles.font14GreyRegular,
+                ),
               ],
             ),
           ),
