@@ -6,6 +6,9 @@ import 'package:doc_app_complete_project/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'widgets/already_have_account.dart';
+import 'widgets/terms_and_condition.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -56,17 +59,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       verticalSpace(24),
-                 Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Text('Forgot Password?', style: Styles.font13BlueRegular,)),
+                      Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: Text(
+                          'Forgot Password?',
+                          style: Styles.font13BlueRegular,
+                        ),
+                      ),
                       verticalSpace(36),
                       AppTextButton(
                         buttonText: 'Login',
-                        onPressed: () {
-                          
-                        },
+                        onPressed: () {},
                         buttonTextStyle: Styles.font16WhiteSemiBold,
                       ),
+                      verticalSpace(16),
+                      const TermsAndConditionsText(),
+                      verticalSpace(60),
+                      const AlreadyHaveAccountText(),
                     ],
                   ),
                 ),
