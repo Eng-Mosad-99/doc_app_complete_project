@@ -47,9 +47,7 @@ dependencies:
   # A powerful HTTP networking package, supports Interceptors, Aborting and canceling a request, Custom adapters, Transformers, etc.
   dio: ^5.9.2
   # An dio client generator using source_gen and inspired by Chopper and Retrofit.
-  retrofit: ^4.9.2
-  # retrofit generator is an dio client generator using source_gen and inspired by Chopper and Retrofit.
-  retrofit_generator: ^10.2.0
+  retrofit: 4.9.0
   # Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format.
   pretty_dio_logger: ^1.4.0
   # For Splash Screen
@@ -75,6 +73,8 @@ dev_dependencies:
   json_serializable: ^6.11.2
   # A build system for Dart code generation and modular compilation.
   build_runner: ^2.15.0
+  # Generator for retrofit API clients.
+  retrofit_generator: ^10.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

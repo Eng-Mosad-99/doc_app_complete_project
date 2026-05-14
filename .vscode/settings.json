@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true,
+    "**/*.retrofit.dart": true,
+    "**/*.pb.dart": true,
+    "**/*.pbenum.dart": true,
+    "**/*.pbjson.dart": true
+  }
+}
