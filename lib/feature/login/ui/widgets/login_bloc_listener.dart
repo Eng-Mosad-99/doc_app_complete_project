@@ -13,16 +13,16 @@ class LoginBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit , LoginState>(
-      listener: (context , state) {
+    return BlocListener<LoginCubit, LoginState>(
+      listenWhen: (previous, current) =>
+          current is LoginLoading || current is LoginSuccess || current is LoginFailure,
+      listener: (context, state) {
         state.whenOrNull(
-         loading: () {
+          loading: () {
             showDialog(
               context: context,
               builder: (context) => const Center(
-                child: CircularProgressIndicator(
-                  color: ColorsManager.mainBlue,
-                ),
+                child: CircularProgressIndicator(color: ColorsManager.mainBlue),
               ),
             );
           },
@@ -35,33 +35,22 @@ class LoginBlocListener extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                icon: const Icon(
-                  Icons.error,
-                  color: Colors.red,
-                  size: 32,
-                ),
-                content: Text(
-                  error,
-                  style: Styles.font15DarkBlueMedium,
-                ),
+                icon: const Icon(Icons.error, color: Colors.red, size: 32),
+                content: Text(error, style: Styles.font15DarkBlueMedium),
                 actions: [
                   TextButton(
                     onPressed: () {
                       context.pop();
                     },
-                    child: Text(
-                      'Got it',
-                      style: Styles.font14BlueSemiBold,
-                    ),
+                    child: Text('Got it', style: Styles.font14BlueSemiBold),
                   ),
                 ],
               ),
             );
           },
-         
         );
       },
-      child:  const SizedBox.shrink(),
+      child: const SizedBox.shrink(),
     );
   }
 }
