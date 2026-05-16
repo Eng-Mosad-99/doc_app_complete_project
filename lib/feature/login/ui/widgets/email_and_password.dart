@@ -2,6 +2,7 @@ import 'package:doc_app_complete_project/core/helper/spacing.dart';
 import 'package:doc_app_complete_project/feature/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/helper/app_regex.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
 import 'password_validations.dart';
@@ -27,7 +28,11 @@ bool isObscureText = true;
     super.initState();
     _passwordController = context.read<LoginCubit>().passwordController;
     _passwordController.addListener(() => setState(() {
-    
+    hasLowerCase = AppRegex.hasLowerCase(_passwordController.text);
+    hasUpperCase = AppRegex.hasUpperCase(_passwordController.text);
+    hasNumber = AppRegex.hasNumber(_passwordController.text);
+    hasSpecialChar = AppRegex.hasSpecialCharacter(_passwordController.text);
+    hasMinLength = AppRegex.hasMinLength(_passwordController.text);
     }));
   }
 @override
@@ -39,7 +44,7 @@ Widget build(BuildContext context) {
         AppTextFormField(
           hintText: 'Email',
           validator: (value) {
-            if (value == null || value.isEmpty) {
+            if (value == null || value.isEmpty || !AppRegex.isEmailValid(value)) {
               return 'Please enter a valid email';
             }
             return null;
@@ -63,7 +68,7 @@ Widget build(BuildContext context) {
             ),
           ),
           validator: (value) {
-            if (value == null || value.isEmpty) {
+            if (value == null || value.isEmpty || !AppRegex.isPasswordValid(value)) {
               return 'Please enter a valid password';
             }
             return null;
