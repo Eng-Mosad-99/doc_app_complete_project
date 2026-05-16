@@ -35,6 +35,12 @@ bool isObscureText = true;
     hasMinLength = AppRegex.hasMinLength(_passwordController.text);
     }));
   }
+
+  @override
+  void dispose() {
+    _passwordController.dispose(); 
+    super.dispose();
+  }
 @override
 Widget build(BuildContext context) {
   return Form(
