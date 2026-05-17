@@ -1,6 +1,8 @@
+import 'package:doc_app_complete_project/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'widgets/doctors_blue_containers.dart';
 import 'widgets/home_top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,6 +20,8 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
          const HomeTopBar(),
+         verticalSpace(16),
+         const DoctorsBlueContainers(),
         ],
        ),
      ),),
