@@ -14,26 +14,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: Colors.white,
-     body: SafeArea(child: Container(
-      
-      width: double.infinity,
-      margin: EdgeInsets.fromLTRB(20.w, 16.h, 20.w, 28.h),
-       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-         const HomeTopBar(),
-         verticalSpace(16),
-         const DoctorsBlueContainers(),
-         verticalSpace(24),
-        const DoctorsSpecialtySeeAll(),
-         verticalSpace(18),
-        const DoctorsSpecialtyListView(),
-        verticalSpace(8),
-        const DoctorsListView(),
-        ],
-       ),
-     ),),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          margin: EdgeInsets.fromLTRB(20.w, 16.h, 20.w, 28.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const HomeTopBar(),
+              verticalSpace(16),
+              const DoctorsBlueContainers(),
+              verticalSpace(24),
+              const DoctorsSpecialtySeeAll(),
+              verticalSpace(18),
+              const DoctorsSpecialtyListView(),
+              verticalSpace(8),
+              const DoctorsListView(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
