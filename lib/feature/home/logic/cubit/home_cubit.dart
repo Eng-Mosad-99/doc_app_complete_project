@@ -11,25 +11,36 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._homeRepo) : super(HomeState.initial());
   final HomeRepo _homeRepo;
 
-  List<SpecializationsData?>? specializationList = [];
+  List<SpecializationsData?>? specializationsList = [];
 
-  void getSpecializationData() async {
-    emit(HomeState.specializationLoading());
-    final result = await _homeRepo.getSpecializationData();
-    result.when(
-      success: (data) {
-        specializationList = data.specializationDataList ?? [];
-        emit(HomeState.specializationSuccess(specializationList));
+  void getSpecializations() async {
+    emit(const HomeState.specializationLoading());
+    final response = await _homeRepo.getSpecializationData();
+    response.when(
+      success: (specializationsResponseModel) {
+        specializationsList =
+            specializationsResponseModel.specializationDataList ?? [];
+
+        // getting the doctors list for the first specialization by default.
+        getDoctorsList(specializationId: specializationsList?.first?.id);
+
+        emit(
+          HomeState.specializationSuccess(
+            specializationsResponseModel.specializationDataList,
+          ),
+        );
       },
-      failure: (error) => emit(
-        HomeState.specializationFailure(
-          error: error.apiErrorModel.message ?? '',
-        ),
-      ),
+      failure: (errorHandler) {
+        emit(
+          HomeState.specializationFailure(
+            error: errorHandler.apiErrorModel.message ?? 'An error occurred',
+          ),
+        );
+      },
     );
   }
 
-  void getDoctorsList({required int specializationId}) async {
+  void getDoctorsList({required int? specializationId}) {
     List<Doctors?>? doctorsList = getDoctorsListBySpecializationId(
       specializationId,
     );
@@ -37,13 +48,17 @@ class HomeCubit extends Cubit<HomeState> {
     if (!doctorsList.isNullOrEmpty()) {
       emit(HomeState.doctorsSuccess(doctorsList));
     } else {
-      emit(HomeState.doctorsFailure(error: ErrorHandler.handle('No doctors found')));
+      emit(
+        HomeState.doctorsFailure(
+          error: ErrorHandler.handle('No doctors found'),
+        ),
+      );
     }
   }
 
   /// returns the list of doctors based on the specialization id
   getDoctorsListBySpecializationId(specializationId) {
-    return specializationList
+    return specializationsList
         ?.firstWhere((specialization) => specialization?.id == specializationId)
         ?.doctorsList;
   }
