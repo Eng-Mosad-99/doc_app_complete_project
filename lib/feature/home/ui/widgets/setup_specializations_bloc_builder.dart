@@ -8,8 +8,8 @@ import '../../logic/cubit/home_state.dart';
 import 'doctors_list_view.dart';
 import 'doctors_specialty_list_view.dart';
 
-class SetupSpecializationsAndDoctorsBlocBuilder extends StatelessWidget {
-  const SetupSpecializationsAndDoctorsBlocBuilder({super.key});
+class SetupSpecializationsBlocBuilder extends StatelessWidget {
+  const SetupSpecializationsBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
