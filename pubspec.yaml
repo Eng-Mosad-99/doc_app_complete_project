@@ -58,6 +58,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   # A flutter library to show images from the internet and keep them in the cache directory.
   cached_network_image: ^3.4.1
+  # Reading and writing simple key-value pairs
+  shared_preferences: ^2.5.3
   
  
  
