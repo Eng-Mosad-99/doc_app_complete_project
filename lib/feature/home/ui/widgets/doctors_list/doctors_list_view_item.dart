@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doc_app_complete_project/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../data/models/specialization_response_model.dart';
 
@@ -15,22 +18,32 @@ class DoctorsListViewItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16.h),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12.0),
-            child: Image.network(
-              doctors?.photo ??
-                  'https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050',
-              width: 110.w,
-              height: 120.h,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Image.network(
-                  'https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050',
+          CachedNetworkImage(
+            imageUrl:
+                "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
+            progressIndicatorBuilder: (context, url, downloadProgress) {
+              return Shimmer.fromColors(
+                baseColor: ColorsManager.lightGrey,
+                highlightColor: Colors.white,
+                child: Container(
                   width: 110.w,
                   height: 120.h,
-                  fit: BoxFit.cover,
-                );
-              },
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            },
+            imageBuilder: (context, imageProvider) => Container(
+              width: 110.w,
+              height: 120.h,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(12.0),
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+              ),
             ),
           ),
           horizontalSpace(16),

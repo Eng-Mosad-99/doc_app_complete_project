@@ -18,7 +18,6 @@ class DoctorsSpecialtyListView extends StatefulWidget {
 }
 
 class _DoctorsSpecialtyListViewState extends State<DoctorsSpecialtyListView> {
-
   int selectedSpecializationIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,11 +29,13 @@ class _DoctorsSpecialtyListViewState extends State<DoctorsSpecialtyListView> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: (){
+            onTap: () {
               setState(() {
                 selectedSpecializationIndex = index;
               });
-              context.read<HomeCubit>().getDoctorsList(specializationId: widget.specializationDataList[index]?.id);
+              context.read<HomeCubit>().getDoctorsList(
+                specializationId: widget.specializationDataList[index]?.id,
+              );
             },
             child: SpecialtyListViewItem(
               specializationsData: widget.specializationDataList[index],

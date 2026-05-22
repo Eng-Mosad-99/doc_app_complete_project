@@ -1,10 +1,8 @@
 import 'package:doc_app_complete_project/feature/home/ui/widgets/specialization_list/speciality_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/widgets/errors_widget.dart';
-import '../../../../core/widgets/loading_widget.dart';
 import '../../logic/cubit/home_cubit.dart';
 import '../../logic/cubit/home_state.dart';
 import 'doctors_list/doctors_shimmer_loading.dart';
