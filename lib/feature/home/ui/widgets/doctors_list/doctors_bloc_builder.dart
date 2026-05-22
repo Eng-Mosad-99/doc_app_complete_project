@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/widgets/errors_widget.dart';
-import '../../logic/cubit/home_cubit.dart';
-import '../../logic/cubit/home_state.dart';
+import '../../../../../core/widgets/errors_widget.dart';
+import '../../../logic/cubit/home_cubit.dart';
+import '../../../logic/cubit/home_state.dart';
 import 'doctors_list_view.dart';
 
 class DoctorsBlocBuilder extends StatelessWidget {

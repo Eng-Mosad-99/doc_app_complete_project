@@ -2,8 +2,8 @@ import 'package:doc_app_complete_project/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theming/styles.dart';
-import '../../data/models/specialization_response_model.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../data/models/specialization_response_model.dart';
 
 class DoctorsListViewItem extends StatelessWidget {
   const DoctorsListViewItem({super.key, this.doctors});

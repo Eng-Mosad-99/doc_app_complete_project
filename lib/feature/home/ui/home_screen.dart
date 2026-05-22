@@ -1,9 +1,9 @@
 import 'package:doc_app_complete_project/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'widgets/doctors_bloc_builder.dart';
+import 'widgets/doctors_list/doctors_bloc_builder.dart';
 import 'widgets/doctors_blue_containers.dart';
-import 'widgets/doctors_speciality_see_all.dart';
+import 'widgets/specialization_list/speciality_see_all.dart';
 import 'widgets/home_top_bar.dart';
 import 'widgets/setup_specializations_bloc_builder.dart';
 
