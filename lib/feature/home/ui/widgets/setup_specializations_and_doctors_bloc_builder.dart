@@ -22,16 +22,16 @@ class SetupSpecializationsAndDoctorsBlocBuilder extends StatelessWidget {
         return state.maybeWhen(
           specializationLoading: () => LoadingWidget(),
           specializationSuccess: (data) {
-            var specializationList = data.specializationDataList;
+            var specializationList = data;
             return Expanded(
               child: Column(
                 children: [
                   DoctorsSpecialtyListView(
-                    specializationsData: specializationList ?? [],
+                    specializationDataList: specializationList??[],
                   ),
                   verticalSpace(8),
                   DoctorsListView(
-                    doctorsList: specializationList?[0].doctorsList,
+                    doctorsList: specializationList?[0]?.doctorsList,
                   ),
                 ],
               ),

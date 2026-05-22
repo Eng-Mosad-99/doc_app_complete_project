@@ -5,7 +5,7 @@ part 'specialization_response_model.g.dart';
 @JsonSerializable()
 class SpecializationsResponseModel {
   @JsonKey(name: 'data')
-  List<SpecializationsData>? specializationDataList;
+  List<SpecializationsData?>? specializationDataList;
 
   SpecializationsResponseModel({
     this.specializationDataList,

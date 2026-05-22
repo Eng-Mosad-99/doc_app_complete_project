@@ -14,7 +14,7 @@ class DoctorsSpecialityListViewItem extends StatelessWidget {
     required this.specializationsData, required this.index,
   });
 
-  final List<SpecializationsData> specializationsData;
+  final SpecializationsData? specializationsData;
   final int index;
 
   @override
@@ -35,7 +35,7 @@ class DoctorsSpecialityListViewItem extends StatelessWidget {
             ),),
           verticalSpace(8),
           Text(
-            specializationsData[index].name??'Speciality',
+            specializationsData?.name ?? 'Speciality',
             style: Styles.font12DarkBlueRegular,
           ),
         ],

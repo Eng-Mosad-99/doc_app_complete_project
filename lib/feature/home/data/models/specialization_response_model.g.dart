@@ -10,7 +10,11 @@ SpecializationsResponseModel _$SpecializationsResponseModelFromJson(
   Map<String, dynamic> json,
 ) => SpecializationsResponseModel(
   specializationDataList: (json['data'] as List<dynamic>?)
-      ?.map((e) => SpecializationsData.fromJson(e as Map<String, dynamic>))
+      ?.map(
+        (e) => e == null
+            ? null
+            : SpecializationsData.fromJson(e as Map<String, dynamic>),
+      )
       .toList(),
 );
 
