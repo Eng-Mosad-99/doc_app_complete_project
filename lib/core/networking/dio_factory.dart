@@ -36,7 +36,7 @@ class DioFactory {
   }
 
   static void appDioHeaders() async {
-    String token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+    String token = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
     dio?.options.headers = {
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',

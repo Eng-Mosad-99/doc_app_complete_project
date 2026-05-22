@@ -60,6 +60,8 @@ dependencies:
   cached_network_image: ^3.4.1
   # Reading and writing simple key-value pairs
   shared_preferences: ^2.5.3
+  # A Flutter plugin for securely storing sensitive data using encrypted storage.
+  flutter_secure_storage: ^10.2.0
   
  
  

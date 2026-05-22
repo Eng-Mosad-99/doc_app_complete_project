@@ -14,13 +14,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
   Bloc.observer = MyBlocObserver();
+  // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   await checkIfLoggedInUser();
   runApp(DocApp(appRouter: AppRouter()));
 }
 
 checkIfLoggedInUser() async {
-  String? userToken = await SharedPrefHelper.getString(
+  String? userToken = await SharedPrefHelper.getSecuredString(
     SharedPrefKeys.userToken,
   );
   if (userToken.isNullOrEmpty()) {
