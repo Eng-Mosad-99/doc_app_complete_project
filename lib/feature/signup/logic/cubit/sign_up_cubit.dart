@@ -18,7 +18,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       TextEditingController();
 
   signUp() async {
-    emit(SignUpState.loading());
+    emit(SignUpState.signupLoading());
     final result = await _repo.signup(
       SignupRequestBody(
         name: nameController.text,
@@ -30,9 +30,9 @@ class SignUpCubit extends Cubit<SignUpState> {
       ),
     );
     result.when(
-      success: (data) => emit(SignUpState.success(data)),
+      success: (data) => emit(SignUpState.signupSuccess(data)),
       failure: (error) =>
-          emit(SignUpState.failure(error: error.apiErrorModel.message ?? '')),
+          emit(SignUpState.signupFailure( error)),
     );
   }
 }

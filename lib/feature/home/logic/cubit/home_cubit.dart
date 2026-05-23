@@ -31,11 +31,7 @@ class HomeCubit extends Cubit<HomeState> {
         );
       },
       failure: (errorHandler) {
-        emit(
-          HomeState.specializationFailure(
-            error: errorHandler.apiErrorModel.message ?? 'An error occurred',
-          ),
-        );
+        emit(HomeState.specializationFailure(errorHandler));
       },
     );
   }
@@ -48,11 +44,7 @@ class HomeCubit extends Cubit<HomeState> {
     if (!doctorsList.isNullOrEmpty()) {
       emit(HomeState.doctorsSuccess(doctorsList));
     } else {
-      emit(
-        HomeState.doctorsFailure(
-          error: ErrorHandler.handle('No doctors found'),
-        ),
-      );
+      emit(HomeState.doctorsFailure());
     }
   }
 

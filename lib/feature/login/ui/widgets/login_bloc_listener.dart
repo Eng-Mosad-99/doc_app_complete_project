@@ -18,7 +18,7 @@ class LoginBlocListener extends StatelessWidget {
           current is LoginLoading || current is LoginSuccess || current is LoginFailure,
       listener: (context, state) {
         state.whenOrNull(
-          loading: () {
+          loginLoading: () {
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -26,17 +26,17 @@ class LoginBlocListener extends StatelessWidget {
               ),
             );
           },
-          success: (loginResponse) {
+          loginSuccess: (loginResponse) {
             context.pop();
             context.pushNamed(Routes.homeScreen);
           },
-          failure: (error) {
+          loginFailure: (error) {
             context.pop();
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
                 icon: const Icon(Icons.error, color: Colors.red, size: 32),
-                content: Text(error, style: Styles.font15DarkBlueMedium),
+                content: Text(error.getAllErrorMessages(), style: Styles.font15DarkBlueMedium),
                 actions: [
                   TextButton(
                     onPressed: () {

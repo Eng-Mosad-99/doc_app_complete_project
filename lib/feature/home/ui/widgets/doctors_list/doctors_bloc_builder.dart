@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,14 +11,15 @@ class DoctorsBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit , HomeState>(
-      buildWhen: (previous, current) => current is DoctorsSuccess || current is DoctorsFailure,
+    return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (previous, current) =>
+          current is DoctorsSuccess || current is DoctorsFailure,
       builder: (context, state) {
         return state.maybeWhen(
           doctorsSuccess: (doctorsDataList) {
             return DoctorsListView(doctorsList: doctorsDataList);
           },
-          doctorsFailure: (error) => ErrorsWidget(error: error?.apiErrorModel.message ?? 'An error occurred'),
+          doctorsFailure: () => ErrorsWidget(error: 'An error occurred'),
           orElse: () => const SizedBox(),
         );
       },

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'api_error_model.g.dart';
 
 @JsonSerializable()
@@ -6,64 +7,46 @@ class ApiErrorModel {
   int? code;
   String? message;
 
-  ApiErrorModel({this.code, this.message});
+  @JsonKey(name: 'data')
+  dynamic errors;
+
+  ApiErrorModel({this.code, this.message, this.errors});
 
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
+
+  /// Returns all error messages as one string
+  String getAllErrorMessages() {
+    if (errors == null || (errors is List && (errors as List).isEmpty)) {
+      return message ?? "Unknown Error occurred";
+    }
+
+    if (errors is Map<String, dynamic>) {
+      final errorMessage = (errors as Map<String, dynamic>).entries
+          .map((entry) {
+            final value = entry.value;
+
+            if (value is List) {
+              return value.join(', ');
+            }
+
+            return value.toString();
+          })
+          .join('\n');
+
+      return errorMessage;
+    }
+
+    if (errors is List) {
+      if ((errors as List).isEmpty) {
+        return message ?? "Unknown Error occurred";
+      }
+
+      return (errors as List).join('\n');
+    }
+
+    return message ?? "Unknown Error occurred";
+  }
 }
-
-// @JsonSerializable()
-// class ApiErrorModel {
-//   final int? code;
-//   final String? message;
-
-//   @JsonKey(includeFromJson: false, includeToJson: false)
-//   final Map<String, dynamic>? errors;
-
-//   ApiErrorModel({
-//     this.code,
-//     this.message,
-//     this.errors,
-//   });
-
-//   factory ApiErrorModel.fromJson(Map<String, dynamic> json) {
-
-//     return ApiErrorModel(
-//       code: json['code'] as int?,
-//       message: _extractMessage(json),
-//       errors: json['data'] as Map<String, dynamic>?,
-//     );
-//   }
-
-//   Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
-
-//   static String _extractMessage(Map<String, dynamic> json) {
-
-//     final data = json['data'];
-
-//     // لو فيه validation errors
-//     if (data is Map<String, dynamic>) {
-
-//       List<String> messages = [];
-
-//       data.forEach((key, value) {
-
-//         if (value is List) {
-//           messages.addAll(
-//             value.map((e) => e.toString()),
-//           );
-//         }
-
-//       });
-
-//       if (messages.isNotEmpty) {
-//         return messages.join('\n');
-//       }
-//     }
-
-//     // fallback
-//     return json['message']?.toString() ?? 'Unknown Error';
-//   }
-// }

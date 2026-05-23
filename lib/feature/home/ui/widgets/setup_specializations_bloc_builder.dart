@@ -24,7 +24,7 @@ class SetupSpecializationsBlocBuilder extends StatelessWidget {
           specializationSuccess: (data) {
             return DoctorsSpecialtyListView(specializationDataList: data ?? []);
           },
-          specializationFailure: (error) => ErrorsWidget(error: error),
+          specializationFailure: (error) => ErrorsWidget(error: error?.message ?? 'An error occurred'),
           orElse: () => const SizedBox.shrink(),
         );
       },

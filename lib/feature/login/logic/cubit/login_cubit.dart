@@ -21,15 +21,15 @@ class LoginCubit extends Cubit<LoginState> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void login(LoginRequestBody loginRequestBody) async {
-    emit(LoginState.loading());
+    emit(LoginState.loginLoading());
     final result = await loginRepo.login(loginRequestBody);
     result.when(
       success: (data) async {
         await saveUserToken(data.data?.token ?? '');
-        emit(LoginState.success(data));
+        emit(LoginState.loginSuccess(data));
       },
       failure: (error) =>
-          emit(LoginState.failure(error: error.apiErrorModel.message ?? '')),
+          emit(LoginState.loginFailure( error)),
     );
   }
 

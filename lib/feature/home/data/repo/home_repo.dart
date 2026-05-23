@@ -13,7 +13,7 @@ class HomeRepo {
       return ApiResult.success(response);
     } catch (e) {
       print(e);
-      return ApiResult.failure(ErrorHandler.handle(e));
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
 }
