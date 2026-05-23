@@ -2,8 +2,6 @@ import 'package:doc_app_complete_project/core/helper/extension.dart';
 import 'package:doc_app_complete_project/core/networking/api_result.dart';
 import 'package:doc_app_complete_project/feature/home/data/repo/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/networking/api_error_handler.dart';
 import '../../data/models/specialization_response_model.dart';
 import 'home_state.dart';
 

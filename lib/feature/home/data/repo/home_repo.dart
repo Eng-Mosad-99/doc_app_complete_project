@@ -2,6 +2,7 @@ import 'package:doc_app_complete_project/core/networking/api_error_handler.dart'
 import 'package:doc_app_complete_project/core/networking/api_result.dart';
 import 'package:doc_app_complete_project/feature/home/data/api/home_api_service.dart';
 import 'package:doc_app_complete_project/feature/home/data/models/specialization_response_model.dart';
+import 'package:flutter/foundation.dart';
 
 class HomeRepo {
   final HomeApiService _homeApiService;
@@ -12,7 +13,9 @@ class HomeRepo {
       final response = await _homeApiService.getSpecializationData();
       return ApiResult.success(response);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }

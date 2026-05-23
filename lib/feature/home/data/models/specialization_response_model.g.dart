@@ -18,9 +18,6 @@ SpecializationsResponseModel _$SpecializationsResponseModelFromJson(
       .toList(),
 );
 
-Map<String, dynamic> _$SpecializationsResponseModelToJson(
-  SpecializationsResponseModel instance,
-) => <String, dynamic>{'data': instance.specializationDataList};
 
 SpecializationsData _$SpecializationsDataFromJson(Map<String, dynamic> json) =>
     SpecializationsData(
@@ -34,13 +31,6 @@ SpecializationsData _$SpecializationsDataFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$SpecializationsDataToJson(
-  SpecializationsData instance,
-) => <String, dynamic>{
-  'id': instance.id,
-  'name': instance.name,
-  'doctors': instance.doctorsList,
-};
 
 Doctors _$DoctorsFromJson(Map<String, dynamic> json) => Doctors(
   id: (json['id'] as num?)?.toInt(),
@@ -53,13 +43,3 @@ Doctors _$DoctorsFromJson(Map<String, dynamic> json) => Doctors(
   degree: json['degree'] as String,
 );
 
-Map<String, dynamic> _$DoctorsToJson(Doctors instance) => <String, dynamic>{
-  'id': instance.id,
-  'name': instance.name,
-  'email': instance.email,
-  'phone': instance.phone,
-  'photo': instance.photo,
-  'gender': instance.gender,
-  'appoint_price': instance.price,
-  'degree': instance.degree,
-};
